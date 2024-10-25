@@ -7,9 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@material/web@latest/material.css">
     <link rel="icon" href="images/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script type="importmap">
+        {
+          "imports": {
+            "@material/web/": "https://esm.run/@material/web/"
+          }
+        }
+      </script>
+      <script type="module">
+        import '@material/web/all.js';
+        import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+    
+        document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+      </script>
 </head>
 <body>
 
@@ -18,7 +33,9 @@
         <!-- Splash Screen -->
         <div id="splash-screen">
             <h1>Welcome to My Portfolio</h1>
-            <div class="loading-animation"></div>
+            <label>            
+                <md-circular-progress indeterminate></md-circular-progress>
+            </label>            
         </div>
         
         <div class="hero" id="hero">
@@ -32,25 +49,27 @@
 
         <!-- Navigation Bar -->
         <nav class="navbar" id="navbar">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
+            <a class="tab active" href="#home">Home</a>
+            <a class="tab" href="#about">About</a>
+            <a class="tab" href="#skills">Skills</a>
+            <a class="tab" href="#projects">Projects</a>
+            <a class="tab" href="#contact">Contact</a>
+        </nav>        
         </div>
 
         <!-- Home Section (Logo and Introduction) -->
         <section id="home">
             <div class="home-content">
-                <img src="/images/logo.png" alt="Logo" id="logo">
-                <h1>Welcome to My Website</h1>
-                <p>My portfolio.</p>
-                <p>As a 20-year-old developer, I am passionate about coding and eager to learn. I’m driven to explore 
+            <img src="/images/logo.png" alt="Logo" id="logo">
+            <div id="home-content-textbox">
+            <h1>Welcome to My Website</h1>
+            <p>My Portfolio<br>
+                    As a 20-year-old developer, I am passionate about coding and eager to learn. I’m driven to explore 
                     different languages, frameworks, and tools, tackling challenges and growing with each experience. 
                     My adaptability and creativity bring a fresh perspective to any team, and I’m committed to continuous 
                     learning and making a meaningful impact in the tech world.</p><br>
-                <p>Explore my services and get to know me better!</p>
+            <p>Explore my services and get to know me better!</p>
+            </div>
             </div>
         </section>
 
@@ -157,7 +176,6 @@
         </section>
 
     </main>
-
     <!-- Linking the JavaScript file -->
     <script src="js/style.js" defer></script>
 </body>

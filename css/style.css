@@ -1,3 +1,4 @@
+
 /*-------------------------------------------------------------------------------------------------------*/
 /*CSS FILE*/
 /*-------------------------------------------------------------------------------------------------------*/
@@ -5,7 +6,6 @@
 html{
   font-family: "Montserrat", sans-serif; /* Font Style */
   font-optical-sizing: auto;
-   
 }
 
 body {
@@ -24,6 +24,12 @@ body {
 
 * {
   box-sizing: border-box; /* Apply box-sizing to all elements */
+}
+
+:root {
+  --md-circular-progress-size: 48px;
+  --md-circular-progress-active-indicator-width: 15;
+  --md-sys-color-primary: #84e8e8;
 }
 
 /*-------------------------------------------------------------------------------------------------------*/
@@ -46,20 +52,6 @@ body {
   transition: opacity 0.5s ease; /* Fade out effect */
 }
 
-.loading-animation {
-  width: 30px; /* Increased width for better visibility */
-  height: 30px; /* Increased height for better visibility */
-  border: 4px solid #ccc; /* Light border */
-  border-top: 4px solid #3466db; /* Color for the spinner */
-  border-radius: 50%; /* Make it a circle */
-  animation: spin 1s linear infinite; /* Spin animation */
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
 #splash-screen h1 {
   font-size: 4rem; /* Adjust as needed */
 }
@@ -74,7 +66,9 @@ body {
 
 .hero{
   display: flex;
-  width: 100%;
+  justify-content: center; /* Center the navbar horizontally */
+  align-items: center; /* Center the navbar vertically */
+  height: 100%; /* Full viewport height */
 }
 
 .hidden {
@@ -86,56 +80,54 @@ body {
 /*-------------------------------------------------------------------------------------------------------*/
 
 .navbar {
-  display: grid; /* Use grid layout */
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive columns */
-  position: fixed; /* Keeps the navbar fixed to the top */
-  top: 0.8em; /* Adds space from the top of the viewport */
-  left: 50%; /* Start positioning from the center */
-  transform: translateX(-50%); /* Center the navbar */
-  background-color: #fff; /* Background color */
-  padding: 0.5em; /* Padding for a smaller navbar */
-  gap: 0.5em;
-  z-index: 1000; /* Ensure it stays above other content */
-  border-radius: 50px; /* More rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
-  width: 90%; /* Adjust width to make it responsive */
-  max-width: 38rem; /* Set a maximum width to limit expansion */
-  margin: 0; /* Remove automatic margin to prevent shifting */
-  transition: top 0.5s ease, background-color 0.5s; /* Add transition for smooth appearance */
+  display: flex;
+  position: fixed;
+  top: 0.8em; /* Fixed at the top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for centering */
+  justify-content: space-around; /* Distribute space between items */
+  background-color: #ffffff; /* Background color */
+  padding: 0.5em; /* Padding around the navbar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 50px;
+  z-index: 1000;
+  transition: top 0.3s; /* Add transition for smooth hiding/showing */
 }
 
-.navbar a {
-  display: flex; /* Flex for link content */
-  align-items: center;
-  justify-content: center;
-  color: black; /* Text color */
-  text-decoration: none; /* Remove underline */
-  padding: 0.75em 1.25em; /* Increased padding for the embedded effect */
-  margin: 0; /* Remove margin for consistent spacing */
-  font-size: 1.25rem; /* Font size */
-  font-weight: bold;
-  background-color: #f2f2f2; /* Light background for buttons */
-  border: none; /* Remove border for embedded look */
+.tab {
+  text-decoration: none; /* Remove underline from links */
+  color: #555; /* Default text color */
+  padding: 0.5em 1em; /* Padding for the tabs */
   border-radius: 50px; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-  transition: opacity 0.5s ease, background-color 0.5s, border-radius 0.5s, box-shadow 0.5s; /* Smooth transition for hover effect */
+  margin: 0.25em;
+  transition: background-color 0.3s; /* Smooth background color change */
 }
 
-.navbar a:hover {
-  background-color: #d2cdcd; /* Darker background on hover */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
-  transform: scale(1.1); /* Grow slightly */
-  transition: transform 0.3s ease; /* Smooth transition */
+.tab.active {
+  background-color: #e0e0e0; /* Highlight color for active tab */
+  color: #333; /* Darker text color for active tab */
 }
 
-/* Remove outline when focused */
-.navbar a:focus {
-  outline: none; /* Ensure no outline is shown */
+.tab:hover {
+  background-color: #f0f0f0; /* Hover effect */
 }
 
-.navbar.scrolled {
-  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent */
-  transition: background-color 0.3s ease; /* Smooth transition */
+.navbar a{
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Dark Mode for Navbar */
+
+body.dark-mode .navbar {
+  background-color: #1a1a1a; /* Darker background for the navbar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Darker shadow in dark mode */
+  color: #f3f3f3;
+}
+
+body.dark-mode .navbar a:hover {
+  background-color: #444; /* Slightly darker on hover */
+  color: #f4f4f4; /* Light hover text color */
 }
 
 /* Dark Mode Toggle Styling */
@@ -152,22 +144,7 @@ body {
   transition: background-color 0.3s ease; /* Smooth background transition */
 }
 
-/* Dark Mode for Navigation Bar & Dark Mode Toggle */
-body.dark-mode .navbar {
-  background-color: #1a1a1a; /* Darker background for the navbar */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Darker shadow in dark mode */
-}
-
-body.dark-mode .navbar a {
-  background-color: #333; /* Darker navbar background */
-  color: #e0e0e0; /* Light navbar text */
-  box-shadow: none; /* Remove box-shadow */
-}
-
-body.dark-mode .navbar a:hover {
-  background-color: #444; /* Slightly darker on hover */
-  color: #f4f4f4; /* Light hover text color */
-}
+/* Dark Mode for Dark Mode Toggle */
 
 /* Hide the default checkbox */
 .dark-mode-toggle input[type="checkbox"] {
@@ -224,26 +201,30 @@ body.dark-mode h1, body.dark-mode p {
   display: flex; /* Use flexbox for layout */
   align-items: center; /* Center items vertically */
   justify-content: center; /* Center items horizontally */
-  height: 100vh; /* Full height of the viewport */
+  height: 100%; /* Full height of the viewport */
   width: 100%;
-  padding: 0 15.5rem; /* Add some horizontal padding */
-}
-
-#logo {
-  max-width: 18rem; /* Set this to a suitable value */
-  height: auto; /* Maintain aspect ratio */
-  border: 0.5rem solid #efabab; /* Adjust color and width */
-  border-radius: 1rem; /* Optional: add rounded corners */
-  padding: 0; /* Optional: space between logo and border */
-  flex: 0 0 auto; /* Keep logo at its original size */
-  margin: 0 1rem; /* Space between logo and content */
+  padding: 5em;
 }
 
 .home-content {
-  text-align: left; /* Align text to the left */
-  line-height: 1.0; /* Decrease line height for compactness */
-  margin: 0; /* Remove margin for better centering */
-  padding: 0; /* Remove any padding */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Icon on the left, text on the right */
+  align-items: center; /* Align items at the start of the grid cell */
+  justify-content: center;
+  line-height: 1.0;
+  margin: auto;
+  padding: 0;
+}
+
+#logo {
+  display: flexbox; /* Use flex to center the icon vertically */
+  justify-content: center; /* Center the icon */
+  align-items: center; /* Center the icon vertically */
+  max-width: 18em; /* Set this to a suitable value */
+  height: auto; /* Maintain aspect ratio */
+  border: 0.5em solid #efabab; /* Adjust color and width */
+  border-radius: 25px; /* Optional: add rounded corners */
+  margin: auto;
 }
 
 .home-content h1 {
@@ -255,8 +236,8 @@ body.dark-mode h1, body.dark-mode p {
   font-size: 1.5rem;
   line-height: 1.6; /* Improve readability */
   color: #555; /* Slightly lighter text color */
-  margin: 0.5rem 0; /* Space between paragraphs */
-  padding: 0.3rem;
+  margin: 0;
+  padding: 0;
 }
 
 /*-------------------------------------------------------------------------------------------------------*/
@@ -300,24 +281,24 @@ body.dark-mode h1, body.dark-mode p {
 
 .scroll-item {
   flex: 0 0 auto; /* Prevent flex items from shrinking */
-  width: 15.5rem;
-  margin: 0 0.5rem; /* Spacing between categories */
+  width: 15.5em;
+  margin: 0 0.5em; /* Spacing between categories */
   background-color: #fff; /* White background for categories */
-  padding: 0.5rem;
-  border-radius: 0.5rem; /* Rounded corners */
-  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 0.5em;
+  border-radius: 0.5em; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   scroll-snap-align: start; /* Align items at the start during scrolling */
 }
 
 .progress {
   background-color: #e0e0e0; /* Light grey background for progress bar */
-  border-radius: 0.6rem;
+  border-radius: 25px;
   overflow: hidden; /* Prevent overflow */
 }
 
 .progress-bar {
-  height: 0.7rem; /* Set height of progress bar */
-  border-radius: 0.5rem;
+  height: 0.7em; /* Set height of progress bar */
+  border-radius: 0.5em;
   background-color: #f39c12; /* Custom color for JavaScript */
   transition: width 0.5s; /* Smooth transition */
 }
@@ -524,7 +505,7 @@ footer {
 /* Adjustments for different screens */
 
 @media (max-width: 1150px) {
-  #home {
+#home {
     padding: 0;
     flex-wrap: wrap;
     align-items: center;
@@ -535,29 +516,29 @@ footer {
   padding: 1em;
   font-size: 0.5rem;
 }
-  #logo {
+#logo {
       width: 15em; /* Smaller logo for large tablets or small laptops */
   }
 }
 
 @media (max-width: 768px) {
-  #splash-screen{
+#splash-screen{
     justify-content: center;
     align-items: center;
     text-align: center;
     z-index: 1000;
   }
-  #splash-screen h1{
+#splash-screen h1{
     font-size: 2rem;
   }
-  #home {
+#home {
     flex-wrap: wrap;
     align-items: center;
   }
 .home-content{
-  align-items: center;
-  text-align: center;
+  grid-template-columns: 1fr;
   padding: 1em;
+  margin-top: 1.15em;
 }
 .home-content h1 ,
 .home-content p {
@@ -586,15 +567,9 @@ footer {
     flex-direction: column;
     align-items: center;
   }
-.home-content {
-  align-items: center;
-  text-align: center;
-  padding: 0.5em;
-  margin-top: 0;
-}
 .home-content h1,
 .home-content p {
-  font-size: 1.3rem;
+  font-size: 1.15rem;
 }
   #skill {
     width: 100%;

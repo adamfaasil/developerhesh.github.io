@@ -5,8 +5,7 @@
 
 ## Description
 
-Welcome to my portfolio website! This site showcases my projects, skills, and experiences as a developer.
-It serves as a platform to highlight my work and connect with potential clients and collaborators in the future.
+Welcome to my portfolio website! This site showcases my projects, skills, and experiences as a developer. It serves as a platform to highlight my work and connect with potential clients and collaborators in the future.
 
 ## Features
 
@@ -19,7 +18,7 @@ It serves as a platform to highlight my work and connect with potential clients 
 ## Technologies Used
 
 - Frontend: HTML, CSS, JavaScript
-- Frameworks/Libraries: Google Fonts, Google Icons
+- Frameworks/Libraries: Bootstrap, Google Fonts
 - Backend (use this for if applicable): [for future use.]
 - Deployment: GitHub Pages.
 

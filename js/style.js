@@ -47,17 +47,17 @@ document.addEventListener('DOMContentLoaded', function () {
   toggleSwitch.checked = currentTheme === 'dark-mode';
 
   // Update the icon based on current theme
-  toggleIcon.textContent = currentTheme === 'dark-mode' ? 'brightness_7' : 'brightness_4';
+  toggleIcon.textContent = currentTheme === 'dark-mode' ? 'light_mode' : 'dark_mode';
 
   // Toggle theme on switch change
   toggleSwitch.addEventListener('change', function () {
       if (toggleSwitch.checked) {
           body.classList.replace('light-mode', 'dark-mode');
-          toggleIcon.textContent = 'brightness_7'; // Change icon to bright
+          toggleIcon.textContent = 'light_mode'; // Change icon to bright
           localStorage.setItem('theme', 'dark-mode');
       } else {
           body.classList.replace('dark-mode', 'light-mode');
-          toggleIcon.textContent = 'brightness_4'; // Change icon to dark
+          toggleIcon.textContent = 'dark_mode'; // Change icon to dark
           localStorage.setItem('theme', 'light-mode');
       }
   });
@@ -84,5 +84,13 @@ window.addEventListener('scroll', function() {
 });
 });
 
+const tabs = document.querySelectorAll('.tab');
 
-
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove 'active' class from all tabs
+        tabs.forEach(t => t.classList.remove('active'));
+        // Add 'active' class to the clicked tab
+        tab.classList.add('active');
+    });
+});
